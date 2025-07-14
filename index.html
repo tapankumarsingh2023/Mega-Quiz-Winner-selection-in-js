@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Weekly lucky winner</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            font-family: "Segoe UI", sans-serif;
+            overflow: hidden;
+            color: #333;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                linear-gradient(rgba(216, 80, 80, 0.6), rgba(192, 55, 55, 0.6)),
+                url("image/jagannath.png") no-repeat center center / cover;
+            z-index: -1;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+        }
+
+        .header-logo {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+        }
+
+        .main-container {
+            text-align: center;
+            z-index: 2;
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .center-logo {
+            width: 400px;
+            height: 400px;
+            object-fit: contain;
+            margin-top: -200px;
+        }
+
+        h2 {
+            color: #e20f0f;
+            margin-bottom: 20px;
+            font-weight: 700;
+            font-size: 50px;
+            text-shadow: 1px 1px 4px rgba(168, 140, 140, 0.7);
+            margin-top: -50px;
+
+        }
+
+        .scroller-container {
+            height: 60px;
+            width: 500px;
+            overflow: hidden;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            background-color: #ffffffcc;
+            margin: 0 auto 20px auto;
+            position: relative;
+        }
+
+        .names-wrapper {
+            position: absolute;
+            width: 100%;
+            animation-timing-function: ease-out;
+        }
+
+        .name {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .highlight {
+            color: #198754;
+            font-size: 28px;
+        }
+
+        .firework {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: gold;
+            border-radius: 50%;
+            animation: explode 1s ease-out forwards;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        @keyframes explode {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(10);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 🔝 Top Header -->
+    <div class="header">
+        <!-- Left Logo -->
+        <img src="image/argusnews.png" class="header-logo" alt="Left Logo" />
+
+        <!-- Right Logo -->
+        <img src="image/argus-digital.png" class="header-logo" alt="Right Logo" />
+    </div>
+
+    <!-- 🎰 Main Content -->
+    <div class="main-container">
+        <!-- Center Logo -->
+        <img src="image/logo_quiz_eng.png" alt="Logo" class="center-logo" />
+
+        <!-- Title -->
+        <h2>Lucky Winner Of this week</h2>
+
+        <!-- Scroller -->
+        <div class="scroller-container">
+            <div id="namesWrapper" class="names-wrapper"></div>
+        </div>
+
+        <!-- Button -->
+        <button class="btn fw-bold" style="background-color: #e20f0f; color: #fff; width: 300px;"
+            onclick="startScroll()">Start</button>
+    </div>
+
+    <!-- 🎮 Script -->
+    <script>
+        const names = [
+            'shankarbabu0609@gmail.com',
+            '9778652255',
+            '9348769793',
+            'sanjubala.sahoo64@gmail.com',
+            'udaya.parida11@gmail.com',
+            'jitansethi239@gmail.com',
+            'patraashutosh187@gmail.com',
+            'dabubehera52@gmail.com',
+            'niharranjannayak39@gmail.com',
+            '7684040192',
+            '7978166025',
+            'hasinipriti1990@gmail.com',
+            '9777282623',
+            'swagatkumarmishra888@gmail.com',
+            '8093258603',
+            'dibyarajbehera23@gmail.com',
+            '9437618241',
+            'bikarttanp9@gmail.com',
+            '9438235040',
+            'bimalkumarbehera472@gmail.com',
+            '7849046146',
+            '7873219340',
+            '7008693697',
+            'mishrasoumendrak@gmail.com',
+            '6370143358',
+            'daspitabas1@gmail.com',
+            'mishraprangyaparamita@gmail.com',
+            '6372832595',
+            '9938975343',
+            'sonaseema06@gmail.com',
+            '6363384295',
+            'prasannaroutray14@gmail.com',
+            '9556360353',
+            'swaingouranga180@gmail.com',
+            'aryankumar5467.3421@gmail.com',
+            'gitanjalichoudhury458@gmail.com',
+            'sushreeswagatikachoudhury@gmail.com',
+            'amanshanaz011@gmail.com',
+            '7750088580',
+            'hindolmobilecare1@gmail.com',
+            'sahoobasant040@gmail.com',
+            '8328916044',
+            'rameshanayak497@gmail.com',
+            '9777099986',
+            '9439917506',
+            '9437930003',
+            '9238629375',
+            'bajarangasamal2006@gmail.com',
+            '6371742149',
+            'anilhari655@gmail.com',
+            '7847940420',
+            '8975919075',
+            '9178616572',
+            'gyandeephota72@gmail.com',
+            '8112118943',
+            'saubhagyanarayandash959@gmail.com',
+            '9337957610',
+            '7979770709',
+            'drkd794@gmail.com',
+            'susrinibedita.rani@gmail.com',
+            'dashtapaswini80@gmail.com',
+            'prakashchandramohantypcm@gmail.com',
+            'krishnasagaria801@gmail.com',
+            'pujarani3125@gmail.com',
+            '9078382165',
+            '9827765909',
+            '7815069046',
+            'chaitanyaswain09@gmail.com',
+            '9040764100',
+            '7750862837',
+            'sonampadhans7s@gmail.com',
+            '8018547380',
+            '7873676691',
+            'seemamishrahw@gmail.com',
+            'sahunilanchal963@gmail.com',
+            '7381553277',
+            '7381553275',
+            '9583762205',
+            '8249732104',
+            '7991021997',
+            '9776995812',
+            '7991022017',
+            '8018837147',
+            '9583943749',
+            '8280109643',
+            '9583978423',
+            '9583762216',
+            '9583762152',
+            '7064523603',
+            'nandaarchana154@gmail.com',
+            '7873226375',
+            '9776277918',
+            '7504874977',
+            '7750863229',
+            '8339815095',
+            '9583762182',
+            '9114669707',
+            '7381553270',
+            '7064527814',
+            'rbgamerz247@gmail.com',
+            '7873226513',
+            '7377440526',
+            'lalatswain65@gmail.com',
+            'pabitrajena588@gmail.com',
+            'gagansuansia077@gmail.com',
+            'soumyaranjansanti@gmail.com',
+            'kailashartamul121@gmail.com',
+            '9438317209',
+            'pinindia88@gmail.com',
+            '9811699388',
+            '7008113506',
+            'raypabitra143@gmail.com',
+            'sanjaykumarsahoo198@gmail.com',
+            'swapanaraj4@gmail.com',
+            'saradapriyamishra924@gmail.com',
+            '8984404018',
+            'tanushreemajhi5@gmail.com'
+
+        ];
+
+        const wrapper = document.getElementById("namesWrapper");
+        let fireworkInterval;
+
+        function startScroll() {
+            wrapper.innerHTML = "";
+            clearInterval(fireworkInterval);
+            document.querySelectorAll(".firework").forEach(f => f.remove());
+
+            const finalIndex = Math.floor(Math.random() * names.length);
+            const fullList = [...names, ...names, ...names];
+
+            fullList.forEach(name => {
+                const div = document.createElement("div");
+                div.className = "name";
+                div.textContent = name;
+                wrapper.appendChild(div);
+            });
+
+            const nameHeight = 60;
+            const stopAtIndex = names.length * 2 + finalIndex;
+            const scrollDistance = stopAtIndex * nameHeight;
+
+            wrapper.style.transition = "transform 3s ease-out";
+            wrapper.style.transform = `translateY(-${scrollDistance}px)`;
+
+            setTimeout(() => {
+                wrapper.innerHTML = "";
+                const finalDiv = document.createElement("div");
+                finalDiv.className = "name highlight";
+                finalDiv.textContent = names[finalIndex];
+                wrapper.appendChild(finalDiv);
+                wrapper.style.transition = "none";
+                wrapper.style.transform = "translateY(0)";
+                startFireworks();
+            }, 3000);
+        }
+
+        function startFireworks() {
+            fireworkInterval = setInterval(() => {
+                const firework = document.createElement("div");
+                firework.className = "firework";
+                firework.style.left = `${Math.random() * window.innerWidth}px`;
+                firework.style.top = `${Math.random() * window.innerHeight}px`;
+                firework.style.background = getRandomColor();
+                document.body.appendChild(firework);
+                setTimeout(() => firework.remove(), 1000);
+            }, 300);
+        }
+
+        function getRandomColor() {
+            const colors = ["#ff5252", "#ffd700", "#40c057", "#339af0", "#845ef7"];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+    </script>
+</body>
+
+</html>
